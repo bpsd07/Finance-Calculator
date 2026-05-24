@@ -1,0 +1,65 @@
+export const taxTooltips: Record<string, { title: string; content: string; limit?: string; example?: string; tip?: string }> = {
+  grossIncome: {
+    title: "Gross Annual Income",
+    content: "Your total annual income before any deductions. Includes salary, business income, rental income, and other sources.",
+    example: "₹12,00,000 per year",
+    tip: "Include all income sources for accurate tax calculation.",
+  },
+  isSalaried: {
+    title: "Employment Type",
+    content: "Salaried individuals get standard deduction. Self-employed professionals can claim business expenses instead.",
+    limit: "Standard deduction: ₹50,000 (Old) / ₹75,000 (New)",
+    tip: "Freelancers and consultants are considered self-employed.",
+  },
+  ageGroup: {
+    title: "Age Group",
+    content: "Tax slabs differ for senior citizens. Individuals above 60 get higher basic exemption limits under Old Regime.",
+    limit: "Senior: 60-80 yrs | Super Senior: 80+ yrs",
+  },
+  investment80C: {
+    title: "Section 80C Investments",
+    content: "Deduction for investments in specified instruments like PPF, ELSS mutual funds, LIC premiums, EPF, tax-saving FDs, Sukanya Samriddhi, etc.",
+    limit: "Maximum ₹1,50,000 per financial year",
+    example: "PPF: ₹50,000 + ELSS: ₹50,000 + LIC: ₹50,000 = ₹1,50,000",
+    tip: "PLI (Postal Life Insurance) and tuition fees for up to 2 children also qualify under 80C.",
+  },
+  healthInsurance80D: {
+    title: "Section 80D — Health Insurance",
+    content: "Deduction for medical insurance premiums paid for self, family, and parents. Higher limits for senior citizens.",
+    limit: "Self + family: ₹25,000 | Parents (below 60): ₹25,000 | Parents (senior): ₹50,000. Senior citizens: up to ₹1,00,000.",
+    example: "Self: ₹15,000 + Parents (senior): ₹50,000 = ₹65,000",
+    tip: "Preventive health checkups up to ₹5,000 are included within the limit.",
+  },
+  hra: {
+    title: "HRA — House Rent Allowance",
+    content: "HRA exemption under Section 10(13A) for salaried individuals living in rented accommodation. Least of three calculations: actual HRA received, 50% of salary (metro) / 40% (non-metro), or rent paid minus 10% of salary.",
+    limit: "Calculated as minimum of: Actual HRA received, 50%/40% of salary, Rent paid - 10% of salary",
+    tip: "If you don't receive HRA but pay rent, you can still claim Section 80GG deduction.",
+  },
+  nps: {
+    title: "NPS — National Pension System (80CCD(1B))",
+    content: "Additional deduction for contributions to the National Pension System (NPS) over and above the ₹1.5 lakh 80C limit.",
+    limit: "Additional ₹50,000 under Section 80CCD(1B)",
+    example: "NPS contribution of ₹60,000 — eligible for ₹50,000 deduction",
+    tip: "Employer's NPS contribution up to 10% of salary (14% for government) is deductible under 80CCD(2), separate from this limit.",
+  },
+  homeLoan: {
+    title: "Home Loan Interest — Section 24(b)",
+    content: "Deduction on interest paid on home loan for self-occupied property. For rented property, the entire interest is deductible (no upper limit).",
+    limit: "Up to ₹2,00,000 for self-occupied property",
+    example: "Home loan of ₹30L @ 9% — annual interest ~₹2.7L, eligible deduction: ₹2,00,000",
+    tip: "Principal repayment qualifies under 80C (within ₹1.5L limit). First-time home buyers get additional ₹50,000 under 80EE.",
+  },
+  educationLoan: {
+    title: "Education Loan Interest — Section 80E",
+    content: "Deduction for interest paid on education loans for higher studies. Available for self, spouse, children, or legal guardian.",
+    limit: "No upper limit. Available for 8 years from the year you start repaying interest.",
+    tip: "The deduction is only for interest, not principal repayment. Available even in New Regime? No, only in Old Regime.",
+  },
+  otherIncome: {
+    title: "Other Income",
+    content: "Include income from other sources: savings account interest, fixed deposit interest, rental income, capital gains, freelance earnings, etc.",
+    example: "FD Interest: ₹25,000 + Savings Interest: ₹10,000 = ₹35,000",
+    tip: "Savings account interest up to ₹10,000 is deductible under Section 80TTA.",
+  },
+};
