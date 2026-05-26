@@ -55,12 +55,12 @@ export function Gauge({ value, label, size = "md", variant = "emerald" }: GaugeP
           style={{ transition: "stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1)" }}
         />
       </svg>
-      <span className={`${config.valueSize} font-bold text-white`}>
+      <span className={`${config.valueSize} font-bold text-foreground`}>
         {Math.round(value)}%
       </span>
-      {label && <span className={`${config.fontSize} text-gray-500`}>{label}</span>}
+      {label && <span className={`${config.fontSize} text-foreground-tertiary`}>{label}</span>}
       <span className={`text-[10px] font-medium uppercase tracking-wider ${
-        variant === "emerald" ? "text-emerald-400" : variant === "amber" ? "text-amber-400" : "text-rose-400"
+        variant === "emerald" ? "text-accent" : variant === "amber" ? "text-warning" : "text-danger"
       }`}>
         {riskLabel}
       </span>

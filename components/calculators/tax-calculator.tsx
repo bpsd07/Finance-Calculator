@@ -12,11 +12,12 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { InfoTooltip } from "@/components/ui/info-tooltip";
+import { NumericInput } from "@/components/ui/numeric-input";
 import { TaxChart } from "@/components/charts/tax-chart";
 import { calculateIncomeTax, type TaxInputs, type DeductionEntry } from "@/lib/calculators/tax";
 import { taxTooltips } from "@/components/ui/tax-tooltip-data";
 import { useToast } from "@/components/ui/toast";
-import { safe, safeClamp } from "@/lib/safe";
+import { safe } from "@/lib/safe";
 
 type CalcMode = "simple" | "advanced";
 
@@ -94,7 +95,7 @@ export function TaxCalculator() {
   const Slider = ({ value, onChange, min, max, step = 5000 }: { value: number; onChange: (v: number) => void; min: number; max: number; step?: number }) => (
     <div className="flex items-center gap-3">
       <input type="range" min={min} max={max} step={step} value={safe(value)} onChange={(e) => onChange(safe(Number(e.target.value)))} className="flex-1" />
-      <input type="number" value={safe(value)} onChange={(e) => onChange(safeClamp(Number(e.target.value), min, max))} className="input w-24 text-right text-base" />
+      <NumericInput value={safe(value)} onChange={onChange} min={min} max={max} className="input w-24 text-right text-base" />
     </div>
   );
 

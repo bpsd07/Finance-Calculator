@@ -12,7 +12,7 @@ const links = [
   { label: "SIP", href: "/sip-calculator" },
   { label: "Tax", href: "/tax-regime-calculator" },
   { label: "Salary", href: "/salary-calculator" },
-  { label: "Loan", href: "/loan-prepayment-calculator" },
+  { label: "Prepay", href: "/loan-prepayment-calculator" },
 ];
 
 export function Navbar() {

@@ -18,8 +18,8 @@ export function PresetButtons({ options, currentValue, onSelect, className = "" 
           onClick={() => onSelect(opt.value)}
           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 border ${
             isSelected(opt.value)
-              ? "bg-emerald-500/15 text-emerald-400 border-emerald-500/30"
-              : "bg-white/[0.04] text-gray-500 border-white/5 hover:text-gray-300 hover:border-white/10 hover:bg-white/[0.06]"
+              ? "bg-accent-subtle text-accent border-accent/30"
+              : "bg-surface-secondary text-foreground-tertiary border-border hover:text-foreground-secondary hover:border-border-light"
           }`}
         >
           {opt.label}

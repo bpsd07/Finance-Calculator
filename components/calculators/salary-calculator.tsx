@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { InfoTooltip } from "@/components/ui/info-tooltip";
+import { NumericInput } from "@/components/ui/numeric-input";
 import { SalaryChart } from "@/components/charts/salary-chart";
 import { calculateSalaryBreakdown, type SalaryComponent } from "@/lib/calculators/salary";
 import { useToast } from "@/components/ui/toast";
@@ -73,18 +74,29 @@ export function SalaryCalculator() {
   const pct = (v: number) => ctc > 0 ? Math.round((safe(v) / ctc) * 100) : 0;
   const monthDiv = view === "monthly" ? 12 : 1;
 
+  const tooltipKeyMap: Record<string, string> = {
+    "Basic Salary": "basic",
+    "HRA": "hra",
+    "Special Allowance": "special",
+    "Employer EPF": "epf",
+    "Employee EPF": "epf",
+    "Gratuity": "gratuity",
+    "Professional Tax": "pt",
+  };
+
   const ComponentRow = ({ comp }: { comp: SalaryComponent }) => {
     const monthVal = view === "monthly" ? Math.round(comp.amount / 12) : comp.amount;
     const barWidth = pct(comp.amount);
     const barColor = comp.type === "earning" ? "bg-accent" : comp.type === "tax" ? "bg-danger" : "bg-foreground-tertiary";
+    const tk = tooltipKeyMap[comp.label];
     return (
       <div className="flex items-center gap-3 py-2">
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
             <div className="flex items-center gap-1.5 truncate">
               <span className="text-xs font-medium text-foreground truncate">{comp.label}</span>
-              {tooltips[comp.label.toLowerCase().replace(/[^a-z]/g, "")] && (
-                <InfoTooltip {...tooltips[comp.label.toLowerCase().replace(/[^a-z]/g, "")]} />
+              {tk && tooltips[tk] && (
+                <InfoTooltip {...tooltips[tk]} />
               )}
             </div>
             <span className="text-xs font-semibold text-foreground shrink-0 ml-2">
@@ -122,7 +134,7 @@ export function SalaryCalculator() {
             <div className="space-y-5">
               <div>
                 <label className="text-sm text-foreground-secondary mb-2 block">Cost to Company (CTC)</label>
-                <input type="number" value={ctc} onChange={(e) => setCtc(Math.max(0, parseInt(e.target.value) || 0))} className="input input-lg" />
+                <NumericInput value={ctc} onChange={setCtc} min={0} max={5000000} className="input input-lg" />
                 <input type="range" min={0} max={5000000} step={50000} value={ctc} onChange={(e) => setCtc(Number(e.target.value))} className="w-full mt-2" />
                 <div className="flex gap-2 mt-2">
                   {[500000, 1000000, 1500000, 2000000, 3000000, 5000000].map(v => (

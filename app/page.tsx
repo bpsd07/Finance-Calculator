@@ -35,7 +35,7 @@ const calculators = [
 ];
 
 const features = [
-  { icon: Brain, title: "AI-Powered Insights", desc: "DeepSeek AI analyzes your numbers and gives personalized financial advice in plain language." },
+  { icon: Brain, title: "AI-Powered Insights", desc: "AI analyzes your numbers and gives personalized financial advice in plain language." },
   { icon: BarChart3, title: "Beautiful Visuals", desc: "Interactive charts that make complex financial data easy to understand at a glance." },
   { icon: ShieldCheck, title: "100% Free", desc: "No sign-ups, no charges. All calculators and AI features are completely free." },
 ];
@@ -89,7 +89,7 @@ export default function HomePage() {
             { label: "Calculators", value: "5+" },
             { label: "AI-Powered", value: "100%" },
             { label: "Accuracy", value: "99.9%" },
-            { label: "Free", value: "₹0" },
+            { label: "Free", value: "100%" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl lg:text-3xl font-bold text-foreground">{stat.value}</p>

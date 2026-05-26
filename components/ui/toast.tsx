@@ -23,9 +23,9 @@ export function useToast() {
 }
 
 const icons = {
-  success: <CheckCircle className="w-5 h-5 text-emerald-400" />,
-  error: <XCircle className="w-5 h-5 text-rose-400" />,
-  info: <Info className="w-5 h-5 text-cyan-400" />,
+  success: <CheckCircle className="w-5 h-5 text-accent" />,
+  error: <XCircle className="w-5 h-5 text-danger" />,
+  info: <Info className="w-5 h-5 text-accent-light" />,
 };
 
 const bgColors = {
@@ -66,10 +66,10 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               className={`glass-panel rounded-xl border ${bgColors[toast.type]} px-4 py-3 flex items-center gap-3 min-w-[280px] max-w-[400px] shadow-xl shadow-black/20`}
             >
               {icons[toast.type]}
-              <span className="text-sm text-gray-200 flex-1">{toast.message}</span>
+              <span className="text-sm text-foreground flex-1">{toast.message}</span>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="text-gray-600 hover:text-gray-300 transition-colors"
+                className="text-foreground-tertiary hover:text-foreground transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>

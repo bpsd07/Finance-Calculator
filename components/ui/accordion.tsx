@@ -20,7 +20,7 @@ export function Accordion({ items, title }: AccordionProps) {
   return (
     <div>
       {title && (
-        <h2 className="text-xl font-bold text-white mb-6">{title}</h2>
+        <h2 className="text-xl font-bold text-foreground mb-6">{title}</h2>
       )}
       <div className="space-y-3">
         {items.map((item, i) => {
@@ -28,17 +28,17 @@ export function Accordion({ items, title }: AccordionProps) {
           return (
             <div
               key={i}
-              className="glass-panel rounded-2xl border border-card-border overflow-hidden transition-all duration-300"
+              className="card rounded-xl overflow-hidden transition-all duration-300"
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : i)}
-                className="w-full flex items-center justify-between p-5 lg:p-6 text-left transition-colors hover:bg-white/[0.02]"
+                className="w-full flex items-center justify-between p-5 lg:p-6 text-left transition-colors hover:bg-surface-secondary"
               >
-                <span className="text-base font-medium text-white pr-4">
+                <span className="text-base font-medium text-foreground pr-4">
                   {item.question}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 text-emerald-400 shrink-0 transition-transform duration-300 ${
+                  className={`w-5 h-5 text-accent shrink-0 transition-transform duration-300 ${
                     isOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -54,7 +54,7 @@ export function Accordion({ items, title }: AccordionProps) {
                     className="overflow-hidden"
                   >
                     <div className="px-5 lg:px-6 pb-5 lg:pb-6">
-                      <p className="text-sm text-gray-400 leading-relaxed">
+                      <p className="text-sm text-foreground-secondary leading-relaxed">
                         {item.answer}
                       </p>
                     </div>

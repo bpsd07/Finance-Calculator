@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Gauge } from "@/components/ui/gauge";
+import { NumericInput } from "@/components/ui/numeric-input";
 import { PresetButtons } from "@/components/ui/preset-buttons";
 import { ShareCard } from "@/components/ui/share-card";
 import { useToast } from "@/components/ui/toast";
@@ -69,19 +70,20 @@ export function SIPCalculator() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
           <Card className="p-6 lg:p-8">
-            <h2 className="text-xl font-bold text-white mb-6">Investment Details</h2>
+            <h2 className="text-xl font-bold text-foreground mb-6">Investment Details</h2>
             <div className="space-y-6">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
-                    <IndianRupee className="w-4 h-4 text-emerald-400" />
+                  <label className="text-sm text-foreground-secondary flex items-center gap-2">
+                    <IndianRupee className="w-4 h-4 text-accent" />
                     Monthly Investment
                   </label>
-                  <input
-                    type="number"
+                  <NumericInput
                     value={monthly}
-                    onChange={(e) => setMonthly(Math.max(100, Number(e.target.value) || 0))}
-                    className="glass-input rounded-lg px-3 py-1.5 text-sm text-white w-24 text-right"
+                    onChange={setMonthly}
+                    min={100}
+                    max={500000}
+                    className="glass-input rounded-lg px-3 py-1.5 text-sm text-foreground w-24 text-right"
                   />
                 </div>
                 <input
@@ -111,15 +113,16 @@ export function SIPCalculator() {
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
-                    <Percent className="w-4 h-4 text-emerald-400" />
+                  <label className="text-sm text-foreground-secondary flex items-center gap-2">
+                    <Percent className="w-4 h-4 text-accent" />
                     Expected Return (%)
                   </label>
-                  <input
-                    type="number"
+                  <NumericInput
                     value={rate}
-                    onChange={(e) => setRate(Math.max(1, Math.min(30, Number(e.target.value) || 0)))}
-                    className="glass-input rounded-lg px-3 py-1.5 text-sm text-white w-20 text-right"
+                    onChange={setRate}
+                    min={1}
+                    max={30}
+                    className="glass-input rounded-lg px-3 py-1.5 text-sm text-foreground w-20 text-right"
                     step="0.5"
                   />
                 </div>
@@ -149,15 +152,16 @@ export function SIPCalculator() {
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-emerald-400" />
+                  <label className="text-sm text-foreground-secondary flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-accent" />
                     Investment Period (Years)
                   </label>
-                  <input
-                    type="number"
+                  <NumericInput
                     value={years}
-                    onChange={(e) => setYears(Math.max(1, Math.min(50, Number(e.target.value) || 0)))}
-                    className="glass-input rounded-lg px-3 py-1.5 text-sm text-white w-16 text-right"
+                    onChange={setYears}
+                    min={1}
+                    max={50}
+                    className="glass-input rounded-lg px-3 py-1.5 text-sm text-foreground w-16 text-right"
                   />
                 </div>
                 <input
@@ -190,12 +194,12 @@ export function SIPCalculator() {
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
           <Card className="card-glow p-6 lg:p-8 h-full flex flex-col">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-white">Wealth Projection</h2>
+              <h2 className="text-xl font-bold text-foreground">Wealth Projection</h2>
               <Badge variant="emerald">Instant</Badge>
             </div>
 
             <div className="text-center mb-4">
-              <p className="text-sm text-gray-500 mb-1">Total Corpus</p>
+              <p className="text-sm text-foreground-tertiary mb-1">Total Corpus</p>
               <p className="text-4xl lg:text-5xl font-bold text-gradient-emerald">
                 ₹<AnimatedCounter value={result.totalValue / 10000000} decimals={2} suffix=" Cr" />
               </p>
@@ -207,14 +211,14 @@ export function SIPCalculator() {
 
             <div className="grid grid-cols-2 gap-3 mb-6">
               <div className="glass-panel rounded-xl p-4 border border-amber-500/10 text-center">
-                <p className="text-xs text-gray-500">Invested</p>
+                <p className="text-xs text-foreground-tertiary">Invested</p>
                 <p className="text-lg font-bold text-amber-400">
                   <AnimatedCounter value={result.totalInvestment} prefix="₹" />
                 </p>
               </div>
               <div className="glass-panel rounded-xl p-4 border border-emerald-500/10 text-center">
-                <p className="text-xs text-gray-500">Returns</p>
-                <p className="text-lg font-bold text-emerald-400">
+                <p className="text-xs text-foreground-tertiary">Returns</p>
+                <p className="text-lg font-bold text-accent">
                   <AnimatedCounter value={result.estimatedReturns} prefix="₹" />
                 </p>
               </div>
@@ -239,11 +243,11 @@ export function SIPCalculator() {
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
           <Card className="p-6 lg:p-8 border-emerald-500/20 bg-emerald-500/5 card-glow">
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-5 h-5 text-emerald-400" />
-              <h3 className="font-semibold text-white">AI Advisor Insights</h3>
+              <Sparkles className="w-5 h-5 text-accent" />
+              <h3 className="font-semibold text-foreground">AI Advisor Insights</h3>
               <Badge variant="emerald">AI</Badge>
             </div>
-            <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line">{explanation}</div>
+            <div className="text-sm text-foreground-secondary leading-relaxed whitespace-pre-line">{explanation}</div>
           </Card>
         </motion.div>
       )}
@@ -274,16 +278,16 @@ export function SIPCalculator() {
 
       <article className="space-y-8">
         <Card className="p-6 lg:p-8">
-          <h1 className="text-2xl lg:text-3xl font-bold text-white mb-2">{content.title}</h1>
-          <p className="text-gray-400 mb-6">{content.subtitle}</p>
-          <p className="text-gray-300 leading-relaxed">{content.introduction}</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">{content.title}</h1>
+          <p className="text-foreground-secondary mb-6">{content.subtitle}</p>
+          <p className="text-foreground-secondary leading-relaxed">{content.introduction}</p>
         </Card>
         {content.sections.map((section) => (
           <Card key={section.heading} className="p-6 lg:p-8">
-            <h2 className="text-xl font-bold text-white mb-4">{section.heading}</h2>
+            <h2 className="text-xl font-bold text-foreground mb-4">{section.heading}</h2>
             <div className="space-y-3">
               {section.paragraphs.map((p, i) => (
-                <p key={i} className="text-gray-400 leading-relaxed text-sm">{p}</p>
+                <p key={i} className="text-foreground-secondary leading-relaxed text-sm">{p}</p>
               ))}
             </div>
           </Card>

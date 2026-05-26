@@ -38,6 +38,7 @@ export function Button({
 
   return (
     <button
+      type="button"
       className={clsx(base, variants[variant], sizes[size], className)}
       disabled={disabled || isLoading}
       {...props}
