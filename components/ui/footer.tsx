@@ -48,7 +48,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-foreground-tertiary">
-                Built with <Heart className="w-3.5 h-3.5 text-red-400" /> in India
+                Built with <Heart className="w-3.5 h-3.5 text-red-400" aria-label="love" /> in India
               </li>
             </ul>
           </div>
@@ -58,7 +58,7 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-foreground-tertiary">
-            &copy; {new Date().getFullYear()} FinAI India. Not financial advice.
+            {'\u00A9'} {new Date().getFullYear()} FinAI India. Not financial advice.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-xs text-foreground-tertiary cursor-not-allowed">Privacy Policy</span>

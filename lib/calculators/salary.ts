@@ -79,9 +79,9 @@ export function calculateSalaryBreakdown(
   const takeHomePercent = 100 - deductionsPercent;
 
   const components: SalaryComponent[] = [
-    { label: "Basic Salary", amount: basic * 12, type: "earning", description: "~40% of CTC, fully taxable" },
-    { label: "HRA", amount: hra * 12, type: "earning", description: "House Rent Allowance, partially exempt" },
-    { label: "Special Allowance", amount: specialAllowance * 12, type: "earning", description: "Residual component, fully taxable" },
+    { label: "Basic Salary", amount: basic, type: "earning", description: "~40% of CTC, fully taxable" },
+    { label: "HRA", amount: hra, type: "earning", description: "House Rent Allowance, partially exempt" },
+    { label: "Special Allowance", amount: specialAllowance, type: "earning", description: "Residual component, fully taxable" },
     { label: "Employer EPF", amount: employerEPF, type: "deduction", description: "12% of basic, employer contribution" },
     { label: "Employee EPF", amount: employeeEPF, type: "deduction", description: "12% of basic, employee contribution" },
     { label: "Gratuity", amount: gratuity, type: "deduction", description: "~4.81% of basic, paid after 5 years" },

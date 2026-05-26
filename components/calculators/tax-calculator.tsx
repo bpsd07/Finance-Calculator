@@ -253,19 +253,19 @@ export function TaxCalculator() {
               <p className="text-2xl font-bold text-accent">₹<AnimatedCounter value={result.taxSavings} /></p>
             </div>
 
-            {/* Details */}
+            {/* Details — shows the better regime */}
             <div className="space-y-2 text-xs">
               <div className="flex justify-between">
                 <span className="text-foreground-tertiary">Taxable Income</span>
-                <span className="text-foreground font-medium">₹{result.oldRegime.taxableIncome.toLocaleString("en-IN")}</span>
+                <span className="text-foreground font-medium">₹{chartRegime.taxableIncome.toLocaleString("en-IN")}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground-tertiary">Effective Tax Rate</span>
-                <span className="text-foreground font-medium">{result.oldRegime.effectiveTaxRate.toFixed(1)}%</span>
+                <span className="text-foreground font-medium">{chartRegime.effectiveTaxRate.toFixed(1)}%</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground-tertiary">Monthly Tax</span>
-                <span className="text-foreground font-medium">₹{result.oldRegime.monthlyTax.toLocaleString("en-IN")}</span>
+                <span className="text-foreground font-medium">₹{chartRegime.monthlyTax.toLocaleString("en-IN")}</span>
               </div>
             </div>
 

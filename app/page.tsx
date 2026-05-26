@@ -89,7 +89,7 @@ export default function HomePage() {
             { label: "Calculators", value: "5+" },
             { label: "AI-Powered", value: "100%" },
             { label: "Accuracy", value: "99.9%" },
-            { label: "Free Forever", value: "₹0" },
+            { label: "Free", value: "₹0" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl lg:text-3xl font-bold text-foreground">{stat.value}</p>

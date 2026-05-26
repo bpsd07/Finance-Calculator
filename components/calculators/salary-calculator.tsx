@@ -71,6 +71,7 @@ export function SalaryCalculator() {
 
   const safe = (v: number) => isNaN(v) || !isFinite(v) ? 0 : v;
   const pct = (v: number) => ctc > 0 ? Math.round((safe(v) / ctc) * 100) : 0;
+  const monthDiv = view === "monthly" ? 12 : 1;
 
   const ComponentRow = ({ comp }: { comp: SalaryComponent }) => {
     const monthVal = view === "monthly" ? Math.round(comp.amount / 12) : comp.amount;
@@ -202,28 +203,28 @@ export function SalaryCalculator() {
             <div className="space-y-2.5">
               <div className="flex justify-between text-xs">
                 <span className="text-foreground-tertiary">Income Tax</span>
-                <span className="font-medium text-foreground">₹{safe(result.incomeTax).toLocaleString("en-IN")}</span>
+                <span className="font-medium text-foreground">₹{safe(result.incomeTax / monthDiv).toLocaleString("en-IN")}</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-foreground-tertiary">Employee EPF</span>
-                <span className="font-medium text-foreground">₹{safe(result.employeeEPF).toLocaleString("en-IN")}</span>
+                <span className="font-medium text-foreground">₹{safe(result.employeeEPF / monthDiv).toLocaleString("en-IN")}</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-foreground-tertiary">Employer EPF</span>
-                <span className="font-medium text-foreground">₹{safe(result.employerEPF).toLocaleString("en-IN")}</span>
+                <span className="font-medium text-foreground">₹{safe(result.employerEPF / monthDiv).toLocaleString("en-IN")}</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-foreground-tertiary">Professional Tax</span>
-                <span className="font-medium text-foreground">₹{safe(result.professionalTax).toLocaleString("en-IN")}</span>
+                <span className="font-medium text-foreground">₹{safe(result.professionalTax / monthDiv).toLocaleString("en-IN")}</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-foreground-tertiary">Gratuity</span>
-                <span className="font-medium text-foreground">₹{safe(result.gratuity).toLocaleString("en-IN")}</span>
+                <span className="font-medium text-foreground">₹{safe(result.gratuity / monthDiv).toLocaleString("en-IN")}</span>
               </div>
               <div className="divider" />
               <div className="flex justify-between text-xs font-semibold">
                 <span className="text-foreground">Total Deductions</span>
-                <span className="text-danger">₹{safe(result.totalDeductions).toLocaleString("en-IN")}</span>
+                <span className="text-danger">₹{safe(result.totalDeductions / monthDiv).toLocaleString("en-IN")}</span>
               </div>
             </div>
 
